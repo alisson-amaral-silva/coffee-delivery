@@ -23,6 +23,10 @@ export const Icon = styled.div<ItemsProps>`
   border-radius: 50%;
   color: white;
   background: ${(props) => props.theme[ITEMS_COLORS[props.color]]};
+  svg {
+    padding-left: 0.4rem;
+    padding-top: 0.4rem;
+  }
 `
 
 export const SpanWrapper = styled.span`

@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
 export const IntroWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  margin-top: 4rem;
+  grid-column-gap: 3.5rem;
+`
+
+export const TitleWrapper = styled.div`
   max-width: 36.7rem;
-  display: flex;
 `
 
 export const Title = styled.h1`
@@ -13,15 +19,17 @@ export const Title = styled.h1`
 `
 
 export const Subtitle = styled.h2`
+  margin-top: 1rem;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.625rem;
 `
 
 export const OptionsWrapper = styled.div`
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 40px;
-  grid-row-gap: 20px;
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 1.25rem;
 `

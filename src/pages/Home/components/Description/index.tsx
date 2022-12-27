@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { DescriptionWrapper, Icon, SpanWrapper } from './style'
 
-interface DescriptionProps {
+export interface DescriptionProps {
   icon: ReactNode
   color: 'dark_yellow' | 'yellow' | 'purple' | 'gray'
   text: string
