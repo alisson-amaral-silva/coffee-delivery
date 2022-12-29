@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.header`
   top: 0;
   height: 6.5rem;
   background: ${(props) => props.theme['background']};
+  padding: 0 10rem;
 `
 
 export const CityWrapper = styled.div`

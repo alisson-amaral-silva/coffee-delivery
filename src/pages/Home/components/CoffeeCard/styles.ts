@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const CoffeeWrapper = styled.div`
-  max-width: 16rem;
-  height: 20.3rem;
+  max-width: 20rem;
+  width: 15rem;
+  height: 21.3rem;
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
   display: flex;
