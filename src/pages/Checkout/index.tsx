@@ -1,4 +1,4 @@
-import { OrderForm } from "./OrderForm";
+import { OrderForm } from "./components/OrderForm";
 
 export function Checkout() {
   return (
