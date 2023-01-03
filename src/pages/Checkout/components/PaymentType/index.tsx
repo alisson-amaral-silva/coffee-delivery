@@ -4,13 +4,16 @@ import { DescriptionWrapper, Icon, PaymentTypeWrapper } from './styles'
 interface PaymentTypeProps {
   icon: ReactNode
   description: string
+  name: string
 }
 
-export function PaymentType({ icon, description }: PaymentTypeProps) {
+export function PaymentType({ icon, description, name }: PaymentTypeProps) {
   return (
-    <PaymentTypeWrapper>
-      {icon && <Icon>{icon}</Icon>}
-      <DescriptionWrapper>{description}</DescriptionWrapper>
-    </PaymentTypeWrapper>
+    <>
+      <PaymentTypeWrapper id={description} name={name} type="radio" />
+      <DescriptionWrapper htmlFor={description}>
+         {description}
+      </DescriptionWrapper>
+    </>
   )
 }

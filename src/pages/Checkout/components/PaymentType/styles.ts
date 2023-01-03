@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
-export const PaymentTypeWrapper = styled.button`
-  display: flex;
+export const PaymentTypeWrapper = styled.input`
+  display: none;
+
+  &:checked + label {
+    border: solid 2px green;
+  }
+  /* display: flex;
   gap: 0.813rem;
   padding: 1rem;
   border-radius: 6px;
@@ -16,14 +21,18 @@ export const PaymentTypeWrapper = styled.button`
   }
   &:hover {
     background: ${(props) => props.theme['base-hover']};
-  }
+  } */
 
 `
 
-export const DescriptionWrapper = styled.span`
+export const DescriptionWrapper = styled.label`
   text-transform: uppercase;
   font-size: 0.75rem;
   color: ${(props) => props.theme['base-text']};
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  border: solid 2px red;
 `
 
 export const Icon = styled.div`
