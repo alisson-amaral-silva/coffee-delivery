@@ -33,3 +33,9 @@ export const OptionsWrapper = styled.div`
   grid-column-gap: 2.5rem;
   grid-row-gap: 1.25rem;
 `
+
+
+export const SpanWrapper = styled.span`
+  font-size: 1rem;
+  line-height: 1.3rem;
+`

@@ -6,30 +6,31 @@ import {
   Subtitle,
   Title,
   TitleWrapper,
+  SpanWrapper
 } from './style'
-import { Description, DescriptionProps } from '../Description'
+import { Description, DescriptionProps } from '../../../../components/Description'
 
 export function Introduction() {
   const descriptions: DescriptionProps[] = [
     {
       icon: <ShoppingCart size={24} weight="fill" />,
       color: 'dark_yellow',
-      text: 'Compra simples e segura',
+      text: <SpanWrapper>Compra simples e segura</SpanWrapper>,
     },
     {
       icon: <Package size={24} weight="fill" />,
       color: 'gray',
-      text: 'Embalagem mantém o café intacto',
+      text: <SpanWrapper>Embalagem mantém o café intacto</SpanWrapper>,
     },
     {
       icon: <Timer size={24} weight="fill" />,
       color: 'yellow',
-      text: 'Entrega rápida e rastreada',
+      text: <SpanWrapper>Entrega rápida e rastreada</SpanWrapper>,
     },
     {
       icon: <Coffee size={24} weight="fill" />,
       color: 'purple',
-      text: 'O café chega fresquinho até você',
+      text: <SpanWrapper>O café chega fresquinho até você</SpanWrapper>,
     },
   ]
   return (
@@ -44,7 +45,7 @@ export function Introduction() {
           {descriptions.map((description) => {
             return (
               <Description
-                key={description.text}
+                key={description.color}
                 color={description.color}
                 text={description.text}
                 icon={description.icon}

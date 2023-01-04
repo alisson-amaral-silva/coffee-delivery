@@ -29,7 +29,3 @@ export const Icon = styled.div<ItemsProps>`
   }
 `
 
-export const SpanWrapper = styled.span`
-  font-size: 1rem;
-  line-height: 1.3rem;
-`
