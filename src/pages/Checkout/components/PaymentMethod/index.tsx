@@ -1,51 +1,70 @@
-import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+import { ReactNode } from 'react'
 import {
-  HeadingWrapper,
-  PaymentMethodWrapper,
+  Container,
+  DescriptionWrapper,
+  Icon,
+  InputWrapper,
   PaymentTypeWrapper,
-  Subtitle,
+  Header,
   Title,
+  Subtitle,
+  TitleContainer,
+  SpanWrapper
 } from './styles'
-import { PaymentType } from '../PaymentType'
+import { CurrencyDollar, Bank, CreditCard, Money } from 'phosphor-react'
+
+interface PaymentTypeProps {
+  icon: ReactNode
+  description: string
+  name: string
+}
 
 export function PaymentMethod() {
-  const PaymentList = [
+  const paymentTypeList = [
     {
-      icon: <CreditCard size={16} />,
-      paymentType: 'Cartão de crédito',
+      icon: <CreditCard size={22} />,
+      description: 'Cartão de Crédito',
+      name: 'payment-radio',
     },
     {
-      icon: <Bank size={16} />,
-      paymentType: 'Cartão de débito',
+      icon: <Bank size={22} />,
+      description: 'Cartão de Débito',
+      name: 'payment-radio',
     },
     {
-      icon: <Money size={16} />,
-      paymentType: 'Dinheiro',
+      icon: <Money size={22} />,
+      description: 'Dinheiro',
+      name: 'payment-radio',
     },
   ]
-
   return (
-    <PaymentMethodWrapper>
-      <HeadingWrapper>
+    <Container>
+      <Header>
         <CurrencyDollar size={22} />
-        <div>
+        <TitleContainer>
           <Title>Pagamento</Title>
           <Subtitle>
             O pagamento é feito na entrega. Escolha a forma que deseja pagar
           </Subtitle>
-        </div>
-      </HeadingWrapper>
+        </TitleContainer>
+      </Header>
       <PaymentTypeWrapper>
-        {PaymentList.map((payment) => {
+        {paymentTypeList.map((payment) => {
           return (
-            <PaymentType
-              key={payment.paymentType}
-              icon={payment.icon}
-              description={payment.paymentType}
-            />
+            <>
+              <InputWrapper
+                id={payment.description}
+                name={payment.name}
+                type="radio"
+              />
+              <DescriptionWrapper htmlFor={payment.description}>
+                {payment.icon && payment.icon}
+                <SpanWrapper>{payment.description}</SpanWrapper>
+              </DescriptionWrapper>
+            </>
           )
         })}
       </PaymentTypeWrapper>
-    </PaymentMethodWrapper>
+    </Container>
   )
 }

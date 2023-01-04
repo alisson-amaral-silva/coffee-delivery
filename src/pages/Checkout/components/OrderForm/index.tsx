@@ -1,6 +1,5 @@
 import { MapPinLine } from 'phosphor-react'
 import {
-  OrderWrapper,
   HeaderWrapper,
   Heading,
   FormWrapper,
@@ -16,7 +15,7 @@ import {
 
 export function OrderForm() {
   return (
-    <OrderWrapper>
+    <>
       <Heading>Complete seu pedido</Heading>
       <FormWrapper>
         <HeaderWrapper>
@@ -45,6 +44,6 @@ export function OrderForm() {
           </BaseInputWrapper>
         </InputWrapper>
       </FormWrapper>
-    </OrderWrapper>
+    </>
   )
 }

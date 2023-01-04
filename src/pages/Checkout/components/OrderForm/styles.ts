@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const OrderWrapper = styled.div`
-  margin-top: 2.5rem;
-`
+
 export const HeaderWrapper = styled.div`
   display: flex;
   gap: 0.715rem;
@@ -29,7 +27,7 @@ export const FormWrapper = styled.div`
   }
 `
 
-export const FormTitle = styled.h2`
+export const FormTitle = styled.h3`
   font-size: 1rem;
   color: ${(props) => props.theme['base-subtitle']};
   font-size: 1.3rem;
