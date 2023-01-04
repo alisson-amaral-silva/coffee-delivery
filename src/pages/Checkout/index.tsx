@@ -1,5 +1,5 @@
 import { OrderForm } from './components/OrderForm'
-import { OrderedItems } from './components/OrderedItems'
+import { OrderedList } from './components/OrderedList'
 import { PaymentMethod } from './components/PaymentMethod'
 import { Container } from './styles'
 
@@ -14,7 +14,7 @@ export function Checkout() {
         </div>
 
         <div>
-          <OrderedItems />
+          <OrderedList />
         </div>
       </Container>
     </>
