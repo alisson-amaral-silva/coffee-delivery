@@ -1,5 +1,11 @@
+import axios from "axios"
+import { useQuery } from "react-query"
 
-
-export async function getCurrentAddress() {
-    return await fetch('https://ipapi.co/json/')
-  }
+export function useCurrentAddress() {
+  return useQuery('address', async () => {
+    const { data } = await axios.get(
+      'https://ipapi.co/json/'
+    )
+    return data
+  })
+}
