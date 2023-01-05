@@ -25,4 +25,6 @@ export const Badge = styled.span`
   position: absolute;
   top: -0.4rem;
   right: -0.4rem;
+  transition-property: all;
+  transition: 0.5s;
 `

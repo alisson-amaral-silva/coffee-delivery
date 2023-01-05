@@ -12,6 +12,8 @@ export function Home() {
         {mock.map((item) => {
           return (
             <CoffeeCard
+              coffeeQuantity={item.quantity}
+              id={item.id}
               name={item.name}
               img={item.img}
               price={item.price}

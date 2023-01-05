@@ -118,8 +118,10 @@ export const BuyButton = styled.button`
   border-radius: 6px;
   width: 2.3rem;
   height: 2.3rem;
+  transition: background 0.5s;
 
   &:hover {
+    transition: background 0.5s;
     background: ${(props) => props.theme['purple']};
   }
 `

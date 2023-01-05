@@ -15,24 +15,32 @@ import {
   QuantityWrapper,
   Title,
 } from './styles'
-import { useCallback, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
+import { CoffeesContext } from '../../../../context/CoffeeContext'
+import { Coffee } from '../../../../reducers/coffees/reducer'
 
 export interface CoffeeCardProps {
+  id: number
   name: string
-  price: string
+  price: number
   description: string
   img: string
   types: string[]
+  coffeeQuantity: number
 }
 
 export function CoffeeCard({
+  id,
   name,
   price,
   description,
   img,
   types,
+  coffeeQuantity,
 }: CoffeeCardProps) {
-  const [quantity, setQuantity] = useState(1)
+  const { createNewCoffee } = useContext(CoffeesContext)
+
+  const [quantity, setQuantity] = useState(coffeeQuantity)
 
   const increase = useCallback(
     () => setQuantity((counter) => counter + 1),
@@ -45,6 +53,18 @@ export function CoffeeCard({
     setQuantity((counter) => counter - 1)
   }, [quantity])
 
+  const handleBuyNewCoffee = useCallback(() => {
+    const newCoffee: Coffee = {
+      id,
+      name,
+      img,
+      price,
+      quantity,
+    }
+
+    createNewCoffee(newCoffee)
+  }, [id, name, img, price, quantity])
+
   return (
     <CoffeeWrapper>
       <CoffeeImage src={img} />
@@ -54,7 +74,7 @@ export function CoffeeCard({
       <FooterWrapper>
         <PriceWrapper>
           <Currency>R$</Currency>
-          <Price>{price}</Price>
+          <Price>{price.toFixed(2)}</Price>
         </PriceWrapper>
         <QuantityWrapper>
           <IncDecQuantityButton onClick={decrease}>
@@ -65,8 +85,8 @@ export function CoffeeCard({
             <Plus size={14} weight="bold" />
           </IncDecQuantityButton>
         </QuantityWrapper>
-        <BuyButton>
-          <ShoppingCart size={22} weight="fill" />
+        <BuyButton className='button'>
+          <ShoppingCart size={22} weight="fill" onClick={handleBuyNewCoffee} />
         </BuyButton>
       </FooterWrapper>
     </CoffeeWrapper>
