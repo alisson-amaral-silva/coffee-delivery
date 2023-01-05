@@ -15,6 +15,7 @@ import {
   QuantityWrapper,
   Title,
 } from './styles'
+import { useCallback, useState } from 'react'
 
 export interface CoffeeCardProps {
   name: string
@@ -24,7 +25,26 @@ export interface CoffeeCardProps {
   types: string[]
 }
 
-export function CoffeeCard({ name, price, description, img, types }: CoffeeCardProps) {
+export function CoffeeCard({
+  name,
+  price,
+  description,
+  img,
+  types,
+}: CoffeeCardProps) {
+  const [quantity, setQuantity] = useState(1)
+
+  const increase = useCallback(
+    () => setQuantity((counter) => counter + 1),
+    [quantity]
+  )
+  const decrease = useCallback(() => {
+    if (quantity == 1) {
+      return
+    }
+    setQuantity((counter) => counter - 1)
+  }, [quantity])
+
   return (
     <CoffeeWrapper>
       <CoffeeImage src={img} />
@@ -37,11 +57,11 @@ export function CoffeeCard({ name, price, description, img, types }: CoffeeCardP
           <Price>{price}</Price>
         </PriceWrapper>
         <QuantityWrapper>
-          <IncDecQuantityButton>
+          <IncDecQuantityButton onClick={decrease}>
             <Minus size={14} weight="bold" />
           </IncDecQuantityButton>
-          <Quantity>1</Quantity>
-          <IncDecQuantityButton>
+          <Quantity>{quantity}</Quantity>
+          <IncDecQuantityButton onClick={increase}>
             <Plus size={14} weight="bold" />
           </IncDecQuantityButton>
         </QuantityWrapper>
