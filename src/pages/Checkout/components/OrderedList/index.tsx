@@ -1,4 +1,5 @@
 import { OrderedItem } from './components/OrderedItem'
+import { useContext } from 'react'
 import {
   BuyButton,
   BuyingWrapper,
@@ -9,17 +10,33 @@ import {
   RegularText,
   TotalText,
   TotalValue,
-  ItemsWrapper
+  ItemsWrapper,
+  OrderedItemsWrapper
 } from './styles'
+import { CoffeesContext } from '../../../../context/CoffeeContext'
 
 export function OrderedList() {
+  const { coffees } = useContext(CoffeesContext)
+
   return (
     <>
       <Heading>Cafés selecionados</Heading>
       <Container>
         <ItemsWrapper>
-          <OrderedItem />
-          <Divider />
+          {coffees.map((coffee) => {
+            return (
+              <OrderedItemsWrapper key={coffee.name}>
+                <OrderedItem
+                  id={coffee.id}
+                  name={coffee.name}
+                  price={coffee.price}
+                  quantity={coffee.quantity}
+                  img={coffee.img}
+                />
+                <Divider />
+              </OrderedItemsWrapper>
+            )
+          })}
         </ItemsWrapper>
         <BuyingWrapper>
           <RegularText>Total de itens</RegularText>

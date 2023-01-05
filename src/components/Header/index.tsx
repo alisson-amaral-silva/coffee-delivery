@@ -11,8 +11,8 @@ export function Header() {
   //Descomentar quando subir pra prod
   // const { status, data, error, isFetching } = useCurrentAddress();
   
-  const { getCoffeeList } = useContext(CoffeesContext)
-  let quantity = getCoffeeList();
+  const { getCoffeeQuantity } = useContext(CoffeesContext)
+  let quantity = getCoffeeQuantity();
 
   return (
     <HeaderWrapper>

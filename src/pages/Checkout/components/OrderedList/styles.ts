@@ -18,9 +18,14 @@ export const Container = styled.div`
 `
 
 export const ItemsWrapper = styled.div`
-  max-height: 12.5rem;
-  /* height: 12.5rem; */
+  max-height: 13.5rem;
   overflow: auto;
+`
+
+export const OrderedItemsWrapper = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
 `
 
 export const Divider = styled.hr`

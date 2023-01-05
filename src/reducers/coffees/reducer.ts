@@ -21,19 +21,15 @@ export function coffeesReducer(state: CoffeesState, action: any) {
           draft.coffees.push(action.payload.coffees)
         })
   
-    //   case ActionTypes.REMOVE_COFFEE: {
-    //     const currentCycleIndex = state.cycles.findIndex((cycle) => {
-    //       return cycle.id === state.activeCycleId
-    //     })
-  
-    //     if (currentCycleIndex < 0) {
-    //       return state
-    //     }
-    //     return produce(state, (draft) => {
-    //       draft.activeCycleId = null
-    //       draft.cycles[currentCycleIndex].finishedDate = new Date()
-    //     })
-    //   }
+      case ActionTypes.REMOVE_COFFEE: {
+        const coffeeListWithoutDeletedOne = state.coffees.filter((coffee) => {
+          return coffee.id !== action.payload.coffeeId
+        })  
+
+        return produce(state, (draft) => {
+          draft.coffees = coffeeListWithoutDeletedOne
+        })
+      }
       default:
         return state
     }

@@ -9,7 +9,7 @@ import {
   Title,
   Subtitle,
   TitleContainer,
-  SpanWrapper
+  SpanWrapper,
 } from './styles'
 import { CurrencyDollar, Bank, CreditCard, Money } from 'phosphor-react'
 
@@ -51,7 +51,7 @@ export function PaymentMethod() {
       <PaymentTypeWrapper>
         {paymentTypeList.map((payment) => {
           return (
-            <>
+            <div key={`${payment.name} - ${payment.description}`}>
               <InputWrapper
                 id={payment.description}
                 name={payment.name}
@@ -61,7 +61,7 @@ export function PaymentMethod() {
                 {payment.icon && payment.icon}
                 <SpanWrapper>{payment.description}</SpanWrapper>
               </DescriptionWrapper>
-            </>
+            </div>
           )
         })}
       </PaymentTypeWrapper>

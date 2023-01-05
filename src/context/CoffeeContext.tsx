@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { Coffee, coffeesReducer } from '../reducers/coffees/reducer'
-import { addCoffeeAction } from '../reducers/coffees/actions'
+import { addCoffeeAction, removeCoffeeAction } from '../reducers/coffees/actions'
 
 export interface CoffeeData {
   id: number
@@ -13,7 +13,8 @@ export interface CoffeeData {
 interface CoffeesContextType {
   coffees: Coffee[]
   createNewCoffee: (data: CoffeeData) => void
-  getCoffeeList: () => number
+  getCoffeeQuantity: () => number
+  deleteCoffee: (idToBeDeleted: number)=> void
 }
 
 interface CoffeesContextProviderProps {
@@ -51,13 +52,17 @@ export function CoffeesContextProvider({
     dispatch(addCoffeeAction(data))
   }
 
+  function deleteCoffee(idToBeDeleted: number) {
+    dispatch(removeCoffeeAction(idToBeDeleted))
+  }
+
   useEffect(() => {
     const stateJSON = JSON.stringify(coffeesState)
 
     localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
   }, [coffeesState])
 
-  function getCoffeeList() {
+  function getCoffeeQuantity() {
     if (coffees.length) {
       const coffeeQuantityList = coffees.map((coffee) => coffee.quantity)
       const coffeeList = coffeeQuantityList.reduce(
@@ -74,7 +79,8 @@ export function CoffeesContextProvider({
       value={{
         coffees,
         createNewCoffee,
-        getCoffeeList,
+        getCoffeeQuantity,
+        deleteCoffee
       }}
     >
       {children}
