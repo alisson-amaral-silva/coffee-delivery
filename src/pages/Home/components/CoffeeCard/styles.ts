@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const CoffeeWrapper = styled.div`
   max-width: 20rem;
   width: 15rem;
-  height: 21.3rem;
+  height: 19.3rem;
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   img {
     padding: 0;
   }
