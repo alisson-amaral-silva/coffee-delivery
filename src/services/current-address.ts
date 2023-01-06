@@ -4,7 +4,7 @@ import { useQuery } from "react-query"
 export function useCurrentAddress() {
   return useQuery('address', async () => {
     const { data } = await axios.get(
-      'https://ipapi.co/json/'
+      import.meta.env.VITE_ADDRESS_API
     )
     return data
   })
