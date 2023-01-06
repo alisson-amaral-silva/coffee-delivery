@@ -49,7 +49,7 @@ export const QuantityWrapper = styled.div`
   height: 2rem;
   width: 4.5rem;
 `
-export const IncDecQuantityButton = styled.button`
+export const IncDecQuantityButton = styled.span`
   color: ${(props) => props.theme['purple']};
   border: 0;
   padding: 0;

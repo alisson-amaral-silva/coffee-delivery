@@ -1,9 +1,15 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
-import { Coffee, coffeesReducer } from '../reducers/coffees/reducer'
 import {
+  Coffee,
+  CoffeeAcquisition,
+  coffeesReducer,
+} from '../reducers/coffees/reducer'
+import {
+  addCoffeeAcquisitionAction,
   addCoffeeAction,
   decreaseCoffeeOnCartAction,
   increaseCoffeeOnCartAction,
+  removeCoffeeAcquisitionAction,
   removeCoffeeAction,
 } from '../reducers/coffees/actions'
 
@@ -15,14 +21,24 @@ export interface CoffeeData {
   quantity: number
 }
 
+export interface CoffeeAcquisitionData {
+  address: string
+  state: string
+  paymentMethod: string
+  coffeeList: string
+}
+
 interface CoffeesContextType {
   coffees: Coffee[]
+  coffeeAcquisition: CoffeeAcquisition | null
   createNewCoffee: (data: CoffeeData) => void
   getCoffeeQuantity: () => number
   deleteCoffee: (idToBeDeleted: number) => void
   increasedCoffeeQuantityOnCart: (idToBeIncreased: number) => void
   decreasedCoffeeQuantityOnCart: (idToBeDecreased: number) => void
   sumEveryCoffee: () => number
+  handleCoffeeAcquisition: (coffeeAcquisition: CoffeeAcquisitionData) => void
+  handleContinueAcquisitions: () => void
 }
 
 interface CoffeesContextProviderProps {
@@ -38,6 +54,7 @@ export function CoffeesContextProvider({
     coffeesReducer,
     {
       coffees: [],
+      coffeeAcquisition: null
     },
     () => {
       const storedStateAsJSON = localStorage.getItem(
@@ -50,11 +67,12 @@ export function CoffeesContextProvider({
 
       return {
         coffees: [],
+        coffeeAcquisition: null
       }
     }
   )
 
-  const { coffees } = coffeesState
+  const { coffees, coffeeAcquisition } = coffeesState
 
   function createNewCoffee(data: CoffeeData) {
     dispatch(addCoffeeAction(data))
@@ -73,17 +91,13 @@ export function CoffeesContextProvider({
   }
 
   function sumEveryCoffee() {
-    const coffeeSumList = coffees.map((coffee) => {return coffee.price * coffee.quantity})
+    const coffeeSumList = coffees.map((coffee) => {
+      return coffee.price * coffee.quantity
+    })
     return coffeeSumList.reduce((sum, currentValue) => {
       return sum + currentValue
     })
   }
-
-  useEffect(() => {
-    const stateJSON = JSON.stringify(coffeesState)
-
-    localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
-  }, [coffeesState])
 
   function getCoffeeQuantity() {
     if (coffees.length) {
@@ -97,16 +111,34 @@ export function CoffeesContextProvider({
     } else return 0
   }
 
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeesState)
+
+    localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
+  }, [coffeesState])
+
+  function handleCoffeeAcquisition(data: CoffeeAcquisitionData) {
+    dispatch(addCoffeeAcquisitionAction(data))
+    coffees.forEach(coffee => dispatch(removeCoffeeAction(coffee.id)))
+  }
+
+  function handleContinueAcquisitions(){
+    dispatch(removeCoffeeAcquisitionAction())
+  }
+
   return (
     <CoffeesContext.Provider
       value={{
         coffees,
+        coffeeAcquisition,
         createNewCoffee,
         getCoffeeQuantity,
         deleteCoffee,
         increasedCoffeeQuantityOnCart,
         decreasedCoffeeQuantityOnCart,
-        sumEveryCoffee
+        sumEveryCoffee,
+        handleCoffeeAcquisition,
+        handleContinueAcquisitions
       }}
     >
       {children}

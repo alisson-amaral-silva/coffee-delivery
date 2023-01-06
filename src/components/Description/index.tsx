@@ -11,7 +11,7 @@ export function Description({ icon, color, text }: DescriptionProps) {
   return (
     <>
     <DescriptionWrapper>
-      {!!icon && <Icon color={color}>{icon}</Icon>}
+      {!!icon && <Icon  color={color}>{icon}</Icon>}
       {!!text && text}
     </DescriptionWrapper>
     </>

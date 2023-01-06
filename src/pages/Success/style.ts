@@ -26,8 +26,8 @@ export const DeliveryWrapper = styled.div`
 
 export const DeliveryDetailsWrapper = styled.div`
   padding: 2.5rem;
-  width: 32.875rem;
-  height: 16.875rem;
+  min-width: 32.875rem;
+  height: 22.125rem;
   border-radius: 6px 36px;
   border: 1px solid;
   border-image: linear-gradient(45deg, #DBAC2C, #8047F8) 1;
@@ -47,3 +47,11 @@ export const DeliveryDescription = styled.div`
 `
 
 export const Image = styled.img``
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60vh;
+`

@@ -15,6 +15,7 @@ const ITEMS_COLORS = {
 
 interface ItemsProps {
   color: keyof typeof ITEMS_COLORS
+  width?: number
 }
 
 export const Icon = styled.div<ItemsProps>`

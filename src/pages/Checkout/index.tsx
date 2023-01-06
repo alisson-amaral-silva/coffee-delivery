@@ -6,7 +6,7 @@ import { PaymentMethod } from './components/PaymentMethod'
 import { Container, EmptyCartWrapper, Title, Image } from './styles'
 import emptyCart from '../../assets/empty-cart.svg'
 import { BuyButton } from './components/OrderedList/styles'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
 import {
   CheckoutFormData,
@@ -15,26 +15,35 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 
 export function Checkout() {
-  const { coffees } = useContext(CoffeesContext)
+  let navigate = useNavigate()
+  const { coffees, handleCoffeeAcquisition } = useContext(CoffeesContext)
 
   const checkoutForm = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutValidationSchema),
     defaultValues: {
-      cep:'',
-      street:'',
-      number:'',
-      complement:'',
-      district:'',
-      city:'',
-      state:'',
-      paymentOption: undefined
+      cep: '',
+      street: '',
+      number: '',
+      complement: '',
+      district: '',
+      city: '',
+      state: '',
+      paymentOption: undefined,
     },
   })
 
   const { handleSubmit, watch } = checkoutForm
 
   function handleCheckout(data: CheckoutFormData) {
-    console.log('data ', data)
+    const coffeesName = coffees.map((coffee) => coffee.name)
+    const acquisition = {
+      address: `${data.street}, ${data.number}`,
+      state: `${data.district} - ${data.city}, ${data.state}`,
+      paymentMethod: data.paymentOption,
+      coffeeList: coffeesName.toString(),
+    }
+    handleCoffeeAcquisition(acquisition)
+    navigate('/success', { replace: true })
   }
 
   return (
@@ -42,7 +51,7 @@ export function Checkout() {
       {coffees.length ? (
         <>
           <h1>Checkout</h1>
-          <Container onSubmit={handleSubmit(handleCheckout)} >
+          <Container onSubmit={handleSubmit(handleCheckout)}>
             <FormProvider {...checkoutForm}>
               <div>
                 <OrderForm />

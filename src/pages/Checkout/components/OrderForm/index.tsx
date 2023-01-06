@@ -32,7 +32,6 @@ export function OrderForm() {
     const cep = e.target.value
     if (cep.length < 8) return
     else {
-      console.log('await getCurrentAddress(cep) ', await getCurrentAddress(cep))
       const { erro, bairro, localidade, logradouro, uf } =
         await getCurrentAddress(cep)
       if (erro) {

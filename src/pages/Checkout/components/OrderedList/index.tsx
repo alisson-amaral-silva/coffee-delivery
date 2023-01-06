@@ -11,15 +11,16 @@ import {
   TotalText,
   TotalValue,
   ItemsWrapper,
-  OrderedItemsWrapper
+  OrderedItemsWrapper,
 } from './styles'
 import { CoffeesContext } from '../../../../context/CoffeeContext'
+import { NavLink } from 'react-router-dom'
 
 export function OrderedList() {
   const { coffees, sumEveryCoffee } = useContext(CoffeesContext)
-  const deliveryPrice = 3.80;
+  const deliveryPrice = 3.8
   let totalPrice = sumEveryCoffee()
-  let totalPlusDelivery = sumEveryCoffee() + deliveryPrice 
+  let totalPlusDelivery = sumEveryCoffee() + deliveryPrice
 
   return (
     <>
@@ -49,6 +50,7 @@ export function OrderedList() {
           <TotalText>Total</TotalText>
           <TotalValue>R$ {totalPlusDelivery.toFixed(2)}</TotalValue>
         </BuyingWrapper>
+
         <BuyButton type="submit">Confirmar Pedido</BuyButton>
       </Container>
     </>
