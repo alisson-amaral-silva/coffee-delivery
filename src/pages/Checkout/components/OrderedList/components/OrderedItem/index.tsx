@@ -31,11 +31,25 @@ export function OrderedItem({
   quantity,
   img,
 }: OrderedItemProps) {
-  const { deleteCoffee } = useContext(CoffeesContext)
+  const {
+    deleteCoffee,
+    increasedCoffeeQuantityOnCart,
+    decreasedCoffeeQuantityOnCart,
+  } = useContext(CoffeesContext)
 
   const handleRemoveCoffee = useCallback(() => {
     deleteCoffee(id)
   }, [id, name, price, quantity, img])
+
+  const increase = useCallback(
+    () => increasedCoffeeQuantityOnCart(id),
+    [quantity]
+  )
+
+  const decrease = useCallback(
+    () => decreasedCoffeeQuantityOnCart(id),
+    [quantity]
+  )
 
   return (
     <Container>
@@ -47,11 +61,11 @@ export function OrderedItem({
         </HeaderWrapper>
         <FooterWrapper>
           <QuantityWrapper>
-            <IncDecQuantityButton>
+            <IncDecQuantityButton onClick={decrease}>
               <Minus size={14} weight="bold" />
             </IncDecQuantityButton>
             <Quantity>{quantity}</Quantity>
-            <IncDecQuantityButton>
+            <IncDecQuantityButton onClick={increase}>
               <Plus size={14} weight="bold" />
             </IncDecQuantityButton>
           </QuantityWrapper>

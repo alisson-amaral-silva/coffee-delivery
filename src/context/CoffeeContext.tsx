@@ -1,6 +1,11 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { Coffee, coffeesReducer } from '../reducers/coffees/reducer'
-import { addCoffeeAction, removeCoffeeAction } from '../reducers/coffees/actions'
+import {
+  addCoffeeAction,
+  decreaseCoffeeOnCartAction,
+  increaseCoffeeOnCartAction,
+  removeCoffeeAction,
+} from '../reducers/coffees/actions'
 
 export interface CoffeeData {
   id: number
@@ -14,7 +19,10 @@ interface CoffeesContextType {
   coffees: Coffee[]
   createNewCoffee: (data: CoffeeData) => void
   getCoffeeQuantity: () => number
-  deleteCoffee: (idToBeDeleted: number)=> void
+  deleteCoffee: (idToBeDeleted: number) => void
+  increasedCoffeeQuantityOnCart: (idToBeIncreased: number) => void
+  decreasedCoffeeQuantityOnCart: (idToBeDecreased: number) => void
+  sumEveryCoffee: () => number
 }
 
 interface CoffeesContextProviderProps {
@@ -56,6 +64,21 @@ export function CoffeesContextProvider({
     dispatch(removeCoffeeAction(idToBeDeleted))
   }
 
+  function increasedCoffeeQuantityOnCart(idToBeDeleted: number) {
+    dispatch(increaseCoffeeOnCartAction(idToBeDeleted))
+  }
+
+  function decreasedCoffeeQuantityOnCart(idToBeDeleted: number) {
+    dispatch(decreaseCoffeeOnCartAction(idToBeDeleted))
+  }
+
+  function sumEveryCoffee() {
+    const coffeeSumList = coffees.map((coffee) => {return coffee.price * coffee.quantity})
+    return coffeeSumList.reduce((sum, currentValue) => {
+      return sum + currentValue
+    })
+  }
+
   useEffect(() => {
     const stateJSON = JSON.stringify(coffeesState)
 
@@ -80,7 +103,10 @@ export function CoffeesContextProvider({
         coffees,
         createNewCoffee,
         getCoffeeQuantity,
-        deleteCoffee
+        deleteCoffee,
+        increasedCoffeeQuantityOnCart,
+        decreasedCoffeeQuantityOnCart,
+        sumEveryCoffee
       }}
     >
       {children}

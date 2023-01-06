@@ -46,6 +46,7 @@ export function CoffeeCard({
     () => setQuantity((counter) => counter + 1),
     [quantity]
   )
+  
   const decrease = useCallback(() => {
     if (quantity == 1) {
       return

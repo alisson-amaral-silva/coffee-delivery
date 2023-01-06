@@ -16,7 +16,10 @@ import {
 import { CoffeesContext } from '../../../../context/CoffeeContext'
 
 export function OrderedList() {
-  const { coffees } = useContext(CoffeesContext)
+  const { coffees, sumEveryCoffee } = useContext(CoffeesContext)
+  const deliveryPrice = 3.80;
+  let totalPrice = sumEveryCoffee()
+  let totalPlusDelivery = sumEveryCoffee() + deliveryPrice 
 
   return (
     <>
@@ -40,11 +43,11 @@ export function OrderedList() {
         </ItemsWrapper>
         <BuyingWrapper>
           <RegularText>Total de itens</RegularText>
-          <PriceText>R$ 29,30</PriceText>
+          <PriceText>R$ {totalPrice.toFixed(2)}</PriceText>
           <RegularText>Entrega</RegularText>
-          <PriceText>R$ 3,80</PriceText>
+          <PriceText>R$ {deliveryPrice.toFixed(2)}</PriceText>
           <TotalText>Total</TotalText>
-          <TotalValue>R$ 33,20</TotalValue>
+          <TotalValue>R$ {totalPlusDelivery.toFixed(2)}</TotalValue>
         </BuyingWrapper>
         <BuyButton>Confirmar Pedido</BuyButton>
       </Container>
