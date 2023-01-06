@@ -74,8 +74,7 @@ export const DescriptionWrapper = styled.label`
   }
 `
 export const SpanWrapper = styled.span`
-
-text-transform: uppercase;
+  text-transform: uppercase;
   font-size: 0.75rem;
   color: ${(props) => props.theme['base-text']};
 `

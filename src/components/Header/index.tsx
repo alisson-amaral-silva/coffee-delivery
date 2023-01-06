@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { CityWrapper, HeaderWrapper, NavWrapper } from './styles'
 import { Cart } from '../Cart'
-import { useCurrentAddress } from '../../services/current-address'
+import { useCurrentState } from '../../services/current-state'
 import { CoffeesContext } from '../../context/CoffeeContext'
 import { useContext } from 'react'
 
 export function Header() {
   //Descomentar quando subir pra prod
-  // const { status, data, error, isFetching } = useCurrentAddress();
+  // const { status, data, error, isFetching } = useCurrentState();
   
   const { getCoffeeQuantity } = useContext(CoffeesContext)
   let quantity = getCoffeeQuantity();

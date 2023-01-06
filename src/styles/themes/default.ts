@@ -22,4 +22,6 @@ export const defaultTheme = {
   yellow: '#DBAC2C',
   'yellow-light': '#F1E9C9',
   'yellow-dark': '#C47F17',
+
+  'red': '#AB222E',
 }

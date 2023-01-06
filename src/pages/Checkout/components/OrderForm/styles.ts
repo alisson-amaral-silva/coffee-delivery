@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const HeaderWrapper = styled.div`
   display: flex;
   gap: 0.715rem;
@@ -41,8 +40,10 @@ export const FormSubtitle = styled.span`
 
 export const InputWrapper = styled.div`
   margin-top: 2rem;
-  display: grid;
   grid-row-gap: 1rem;
+  width: 37rem;
+  display: flex;
+  flex-direction: column;
 `
 
 interface BaseInputProps {
@@ -54,6 +55,10 @@ export const BaseInputWrapper = styled.div`
   gap: 0.75rem;
 `
 
+interface BaseErrorWrapperProps {
+  grid: string
+}
+
 export const BaseInput = styled.input<BaseInputProps>`
   background: ${(props) => props.theme['base-input']};
   width: ${(props) => props.width || 12.5}rem;
@@ -62,6 +67,12 @@ export const BaseInput = styled.input<BaseInputProps>`
   border: 1px solid ${(props) => props.theme['base-button']};
   border-radius: 4px;
   padding: 0.75rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    
+    border: 1px solid ${(props) => props.theme['base-button']};
+  }
 
   &::placeholder {
     color: ${(props) => props.theme['base-label']};
@@ -138,4 +149,10 @@ export const SuffixWrapper = styled.div`
     border-left: 1px solid transparent;
     border: 1px solid ${(props) => props.theme['yellow-dark']};
   }
+`
+
+export const ErrorMessageWrapper = styled.p`
+  color: ${(props) => props.theme['red']};
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 `

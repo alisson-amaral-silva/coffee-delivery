@@ -12,6 +12,9 @@ import {
   SpanWrapper,
 } from './styles'
 import { CurrencyDollar, Bank, CreditCard, Money } from 'phosphor-react'
+import { ErrorMessage } from '@hookform/error-message'
+import { ErrorMessageWrapper } from '../OrderForm/styles'
+import { useFormContext } from 'react-hook-form'
 
 interface PaymentTypeProps {
   icon: ReactNode
@@ -19,24 +22,36 @@ interface PaymentTypeProps {
   name: string
 }
 
+export const paymentTypeList = [
+  {
+    id: 'CREDITO',
+    icon: <CreditCard size={22} />,
+    description: 'Cartão de Crédito',
+    name: 'payment-radio',
+  },
+  {
+    id: 'DEBITO',
+    icon: <Bank size={22} />,
+    description: 'Cartão de Débito',
+    name: 'payment-radio',
+  },
+  {
+    id: 'DINHEIRO',
+    icon: <Money size={22} />,
+    description: 'Dinheiro',
+    name: 'payment-radio',
+  },
+]
+
 export function PaymentMethod() {
-  const paymentTypeList = [
-    {
-      icon: <CreditCard size={22} />,
-      description: 'Cartão de Crédito',
-      name: 'payment-radio',
-    },
-    {
-      icon: <Bank size={22} />,
-      description: 'Cartão de Débito',
-      name: 'payment-radio',
-    },
-    {
-      icon: <Money size={22} />,
-      description: 'Dinheiro',
-      name: 'payment-radio',
-    },
-  ]
+  const {
+    register,
+    control,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useFormContext()
+
   return (
     <Container>
       <Header>
@@ -51,11 +66,13 @@ export function PaymentMethod() {
       <PaymentTypeWrapper>
         {paymentTypeList.map((payment) => {
           return (
-            <div key={`${payment.name} - ${payment.description}`}>
+            <div key={payment.id}>
               <InputWrapper
                 id={payment.description}
-                name={payment.name}
+                {...register('paymentOption')}
+                value={payment.description}
                 type="radio"
+                
               />
               <DescriptionWrapper htmlFor={payment.description}>
                 {payment.icon && payment.icon}
@@ -65,6 +82,13 @@ export function PaymentMethod() {
           )
         })}
       </PaymentTypeWrapper>
+      <ErrorMessage
+        errors={errors}
+        name="paymentOption"
+        render={({ message }) => (
+          <ErrorMessageWrapper>{message}</ErrorMessageWrapper>
+        )}
+      />
     </Container>
   )
 }

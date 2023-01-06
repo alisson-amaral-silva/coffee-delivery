@@ -1,11 +1,8 @@
 import axios from "axios"
-import { useQuery } from "react-query"
 
-export function useCurrentAddress() {
-  return useQuery('address', async () => {
+export async function getCurrentAddress(cep: string) {
     const { data } = await axios.get(
-      import.meta.env.VITE_ADDRESS_API
-    )
-    return data
-  })
+        `${import.meta.env.VITE_CEP_API}/${cep}/json`
+      )
+      return data
 }

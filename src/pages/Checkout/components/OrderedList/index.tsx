@@ -49,7 +49,7 @@ export function OrderedList() {
           <TotalText>Total</TotalText>
           <TotalValue>R$ {totalPlusDelivery.toFixed(2)}</TotalValue>
         </BuyingWrapper>
-        <BuyButton>Confirmar Pedido</BuyButton>
+        <BuyButton type="submit">Confirmar Pedido</BuyButton>
       </Container>
     </>
   )
