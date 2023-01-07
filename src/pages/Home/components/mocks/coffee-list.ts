@@ -6,6 +6,7 @@ export default [
     types:['Tradicional'],
     description: 'O tradicional café feito com água quente e grãos moídos',
     img: 'src/assets/expresso.svg',
+    detailed_img:'src/assets/coffee-details/expresso.png',
     quantity: 1,
   },
   {
@@ -15,6 +16,7 @@ export default [
     types:['Tradicional'],
     description: 'Expresso diluído, menos intenso que o tradicional',
     img: 'src/assets/americano.svg',
+    detailed_img:'src/assets/coffee-details/americano.png',
     quantity: 1,
   },
   {
@@ -24,6 +26,7 @@ export default [
     types:['Tradicional'],
     description: 'Café expresso tradicional com espuma cremosa',
     img: 'src/assets/expresso-cremoso.svg',
+    detailed_img:'src/assets/coffee-details/expresso-cream.png',
     quantity: 1,
   },
   {
@@ -33,6 +36,7 @@ export default [
     types:['Tradicional', 'Gelado'],
     description: 'Bebida preparada com café expresso e cubos de gelo',
     img: 'src/assets/cafe-gelado.svg',
+    detailed_img:'src/assets/coffee-details/ice-coffee.png',
     quantity: 1,
   },
   {
@@ -42,6 +46,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     img: 'src/assets/cafe-leite.svg',
+    detailed_img:'src/assets/coffee-details/coffee-milk.png',
     quantity: 1,
   },
   {
@@ -51,6 +56,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
     img: 'src/assets/latte.svg',
+    detailed_img:'src/assets/coffee-details/latte-coffee.png',
     quantity: 1,
   },
   {
@@ -60,6 +66,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
     img: 'src/assets/capuccino.svg',
+    detailed_img:'src/assets/coffee-details/cappuccino.png',
     quantity: 1,
   },
   {
@@ -69,6 +76,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Café expresso misturado com um pouco de leite quente e espuma',
     img: 'src/assets/macchiato.svg',
+    detailed_img:'src/assets/coffee-details/macchiato.png',
     quantity: 1,
   },
   {
@@ -78,6 +86,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     img: 'src/assets/mochaccino.svg',
+    detailed_img:'src/assets/coffee-details/mochaccino.png',
     quantity: 1,
   },
   {
@@ -87,6 +96,7 @@ export default [
     types:['Tradicional', 'Com leite'],
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     img: 'src/assets/chocolate-quente.svg',
+    detailed_img:'src/assets/coffee-details/hot-chocolate.png',
     quantity: 1,
   },
   {
@@ -96,6 +106,7 @@ export default [
     types:['Tradicional', 'Alcoólico', 'Gelado'],
     description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
     img: 'src/assets/cubano.svg',
+    detailed_img:'src/assets/coffee-details/cubano-coffee.png',
     quantity: 1,
   },
   {
@@ -105,6 +116,7 @@ export default [
     types:['Especial'],
     description: 'Bebida adocicada preparada com café e leite de coco',
     img: 'src/assets/havaiano.svg',
+    detailed_img:'src/assets/coffee-details/hawaian-coffee.png',
     quantity: 1,
   },
   {
@@ -114,6 +126,7 @@ export default [
     types:['Especial'],
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     img: 'src/assets/arabe.svg',
+    detailed_img:'src/assets/coffee-details/arabic-coffee.png',
     quantity: 1,
   },
   {
@@ -123,6 +136,7 @@ export default [
     types:['Especial', 'Alcoólico'],
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     img: 'src/assets/irlandes.svg',
+    detailed_img:'src/assets/coffee-details/irish-coffee.png',
     quantity: 1,
   },
 ]
