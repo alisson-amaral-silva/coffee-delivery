@@ -1,7 +1,7 @@
 import { Type, TypeWrapper, CoffeeTypeList } from './styles'
 
 interface CoffeeTypeProps {
-  coffeeList: string[]
+  coffeeList: string[] 
 }
 export function CoffeeType({ coffeeList }: CoffeeTypeProps) {
   return (

@@ -6,6 +6,7 @@ import { Success } from '../pages/Success'
 import { NotFound } from '../pages/NotFound'
 import { CoffeesContext } from '../context/CoffeeContext'
 import { useContext } from 'react'
+import { CoffeeDetails } from '../pages/CoffeeDetails'
 export function Router() {
   const { coffeeAcquisition } = useContext(CoffeesContext)
 
@@ -25,6 +26,9 @@ export function Router() {
             coffeeAcquisition ? <Success /> : <Navigate to="/" replace />
           }
         />
+        <Route path="coffee">
+          <Route path=":coffeeId" element={<CoffeeDetails />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

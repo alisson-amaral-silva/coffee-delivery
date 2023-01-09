@@ -6,7 +6,7 @@ export interface Coffee {
   name: string
   price: number
   img: string
-  quantity: number
+  quantity?: number
 }
 
 export interface CoffeeAcquisition {
@@ -33,7 +33,7 @@ export function coffeesReducer(state: CoffeesState, action: any) {
       })
 
       if (coffee) {
-        const increasedQuantity = coffee!.quantity + 1
+        const increasedQuantity = coffee!.quantity! + 1
         return produce(state, (draft) => {
           draft.coffees[coffeeIndex].quantity = increasedQuantity
         })
@@ -62,7 +62,7 @@ export function coffeesReducer(state: CoffeesState, action: any) {
         return coffee.id === action.payload.coffeeId
       })
 
-      const increasedQuantity = coffee!.quantity + 1
+      const increasedQuantity = coffee!.quantity! + 1
 
       return produce(state, (draft) => {
         draft.coffees[coffeeIndex].quantity = increasedQuantity
@@ -78,7 +78,7 @@ export function coffeesReducer(state: CoffeesState, action: any) {
         return coffee.id === action.payload.coffeeId
       })
 
-      const decreasedQuantity = coffee!.quantity - 1
+      const decreasedQuantity = coffee!.quantity! - 1
 
       if (coffee!.quantity === 1) {
         return produce(state, (draft) => {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link  } from 'react-router-dom'
 
 export const CoffeeWrapper = styled.div`
   max-width: 15rem;
@@ -13,6 +14,17 @@ export const CoffeeWrapper = styled.div`
     padding: 0;
   }
 `
+
+export const LinkWrapper = styled.button`
+  a:link {
+    text-decoration: none;
+  }
+  &:link {
+    text-decoration: none;
+  }
+  border: 0;
+`
+
 export const CoffeeImage = styled.img`
   margin-top: -1rem;
 `
@@ -42,6 +54,11 @@ export const Title = styled.h4`
   line-height: 1.625rem;
   text-align: center;
   color: ${(props) => props.theme['base-subtitle']};
+
+  &:hover {
+    color: ${(props) => props.theme['purple']};
+    cursor: pointer;
+  }
 `
 export const Description = styled.span`
   font-size: 0.875rem;

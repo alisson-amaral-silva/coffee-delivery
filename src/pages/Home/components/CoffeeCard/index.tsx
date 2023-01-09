@@ -14,10 +14,12 @@ import {
   Quantity,
   QuantityWrapper,
   Title,
+  LinkWrapper,
 } from './styles'
 import { useCallback, useContext, useState } from 'react'
 import { CoffeesContext } from '../../../../context/CoffeeContext'
 import { Coffee } from '../../../../reducers/coffees/reducer'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 
 export interface CoffeeCardProps {
   id: number
@@ -26,7 +28,7 @@ export interface CoffeeCardProps {
   description: string
   img: string
   types: string[]
-  coffeeQuantity: number
+  coffeeQuantity?: number
 }
 
 export function CoffeeCard({
@@ -36,22 +38,24 @@ export function CoffeeCard({
   description,
   img,
   types,
-  coffeeQuantity,
+  coffeeQuantity = 1,
 }: CoffeeCardProps) {
+  let navigate = useNavigate()
+  const { coffeeId } = useParams()
   const { createNewCoffee } = useContext(CoffeesContext)
 
   const [quantity, setQuantity] = useState(coffeeQuantity)
 
   const increase = useCallback(
-    () => setQuantity((counter) => counter + 1),
+    () => setQuantity((counter) => counter! + 1),
     [quantity]
   )
-  
+
   const decrease = useCallback(() => {
     if (quantity == 1) {
       return
     }
-    setQuantity((counter) => counter - 1)
+    setQuantity((counter) => counter! - 1)
   }, [quantity])
 
   const handleBuyNewCoffee = useCallback(() => {
@@ -66,11 +70,17 @@ export function CoffeeCard({
     createNewCoffee(newCoffee)
   }, [id, name, img, price, quantity])
 
+  const handleLink = useCallback(() => {
+    navigate(`/coffee/${id}`, { replace: true })
+  }, [id])
+
   return (
     <CoffeeWrapper>
       <CoffeeImage src={img} />
       <CoffeeType coffeeList={types} />
-      <Title>{name}</Title>
+      <LinkWrapper onClick={handleLink}>
+        <Title>{name}</Title>
+      </LinkWrapper>
       <Description>{description}</Description>
       <FooterWrapper>
         <PriceWrapper>
@@ -86,7 +96,7 @@ export function CoffeeCard({
             <Plus size={14} weight="bold" />
           </IncDecQuantityButton>
         </QuantityWrapper>
-        <BuyButton className='button'>
+        <BuyButton className="button">
           <ShoppingCart size={22} weight="fill" onClick={handleBuyNewCoffee} />
         </BuyButton>
       </FooterWrapper>

@@ -18,7 +18,7 @@ export interface CoffeeData {
   name: string
   price: number
   img: string
-  quantity: number
+  quantity?: number
 }
 
 export interface CoffeeAcquisitionData {
@@ -32,7 +32,7 @@ interface CoffeesContextType {
   coffees: Coffee[]
   coffeeAcquisition: CoffeeAcquisition | null
   createNewCoffee: (data: CoffeeData) => void
-  getCoffeeQuantity: () => number
+  getCoffeeQuantity: () => number | undefined
   deleteCoffee: (idToBeDeleted: number) => void
   increasedCoffeeQuantityOnCart: (idToBeIncreased: number) => void
   decreasedCoffeeQuantityOnCart: (idToBeDecreased: number) => void
@@ -92,7 +92,7 @@ export function CoffeesContextProvider({
 
   function sumEveryCoffee() {
     const coffeeSumList = coffees.map((coffee) => {
-      return coffee.price * coffee.quantity
+      return coffee.price * coffee.quantity!
     })
     return coffeeSumList.reduce((sum, currentValue) => {
       return sum + currentValue
@@ -104,7 +104,7 @@ export function CoffeesContextProvider({
       const coffeeQuantityList = coffees.map((coffee) => coffee.quantity)
       const coffeeList = coffeeQuantityList.reduce(
         (accumulator, currentValue) => {
-          return accumulator + currentValue
+          return accumulator! + currentValue!
         }
       )
       return coffeeList
