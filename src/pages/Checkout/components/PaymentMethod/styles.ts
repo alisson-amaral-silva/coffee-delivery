@@ -12,7 +12,7 @@ export const Container = styled.div`
   ${media.lessThan('small')`
     max-width: 100%;
     padding: 1.5rem 0.5rem 0 1.5rem;
-    height: 15rem;
+    height: 17rem;
   `}
 `
 
