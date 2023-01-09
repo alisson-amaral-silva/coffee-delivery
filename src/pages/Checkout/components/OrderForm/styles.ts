@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ export const Heading = styled.h1`
 export const FormWrapper = styled.div`
   margin-top: 0.938rem;
   max-width: 40rem;
+
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
   padding: 2.5rem;
@@ -24,6 +26,11 @@ export const FormWrapper = styled.div`
   svg {
     color: ${(props) => props.theme['yellow-dark']};
   }
+
+  ${media.lessThan('small')`
+    max-width: 100vw;
+    padding: 1.5rem;
+  `}
 `
 
 export const FormTitle = styled.h3`
@@ -42,6 +49,11 @@ export const InputWrapper = styled.div`
   margin-top: 2rem;
   grid-row-gap: 1rem;
   width: 37rem;
+
+  ${media.lessThan('small')`
+    width: 100%;
+  `}
+
   display: flex;
   flex-direction: column;
 `
@@ -52,6 +64,10 @@ interface BaseInputProps {
 
 export const BaseInputWrapper = styled.div`
   display: flex;
+  ${media.lessThan('small')`
+    flex-direction: column;
+    gap: 1rem;
+  `}
   gap: 0.75rem;
 `
 
@@ -68,9 +84,13 @@ export const BaseInput = styled.input<BaseInputProps>`
   border-radius: 4px;
   padding: 0.75rem;
 
+  ${media.lessThan('small')`
+    width: 100%;
+  `}
+
   &:disabled {
     cursor: not-allowed;
-    
+
     border: 1px solid ${(props) => props.theme['base-button']};
   }
 
@@ -91,6 +111,7 @@ export const BaseInput = styled.input<BaseInputProps>`
 export const InputComplementWrapper = styled.div`
   display: flex;
   background: ${(props) => props.theme['base-input']};
+
   border-radius: 4px;
   /* color: ${(props) => props.theme['base-text']}; */
   /* border: 1px solid ${(props) => props.theme['base-button']}; */

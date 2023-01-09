@@ -1,7 +1,12 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
   margin-top: 5rem;
+
+  ${media.lessThan('small')`
+      margin: 0;
+  `}
 `
 export const Title = styled.h1`
   font-family: 'Baloo 2';
@@ -20,8 +25,14 @@ export const Subtitle = styled.h2`
 export const DeliveryWrapper = styled.div`
   margin-top: 2.5rem;
   display: flex;
-	align-items: center;
+  align-items: center;
   gap: 6.375rem;
+
+  img {
+    ${media.lessThan('small')`
+      display: none;
+  `}
+  }
 `
 
 export const DeliveryDetailsWrapper = styled.div`
@@ -30,7 +41,15 @@ export const DeliveryDetailsWrapper = styled.div`
   height: 22.125rem;
   border-radius: 6px 36px;
   border: 1px solid;
-  border-image: linear-gradient(45deg, #DBAC2C, #8047F8) 1;
+  border-image: linear-gradient(45deg, #dbac2c, #8047f8) 1;
+
+  ${media.lessThan('small')`
+    min-width: 100%;
+    padding: 1rem;
+    .icon {
+      display: none;
+    }
+  `}
 `
 
 export const SpanWrapper = styled.span`
@@ -41,9 +60,13 @@ export const SpanWrapper = styled.span`
 export const DeliveryDescription = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 2rem;
+
+  ${media.lessThan('small')`
+    grid-row-gap: 0.1rem;
+  `}
 `
 
 export const Image = styled.img``

@@ -25,6 +25,7 @@
     "react-spinners": "^0.13.7",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
+    "styled-media-query": "^2.1.2",
     "zod": "^3.20.2"
   },
   "devDependencies": {

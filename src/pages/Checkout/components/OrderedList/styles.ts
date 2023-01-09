@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Heading = styled.h2`
   font-family: 'Baloo 2';
@@ -12,6 +13,14 @@ export const Container = styled.div`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
   width: 28rem;
+
+  ${media.lessThan('small')`
+    width: 100%;
+    padding: 1.25rem;
+    height: 28rem;
+    border-radius: 6px;
+  `}
+
   height: 31.125rem;
   padding: 2.5rem;
   margin-top: 0.938rem;
@@ -81,6 +90,10 @@ export const BuyButton = styled.button`
 
   width: 23rem;
   height: 2.875rem;
+
+  ${media.lessThan('small')`
+    width: 100%;  
+  `}
 
   &:hover {
     background: ${(props) => props.theme['yellow-dark']};

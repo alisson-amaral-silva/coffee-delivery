@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import media from 'styled-media-query'
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -16,6 +17,12 @@ export const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme['background']};
         color: ${(props) => props.theme['base-text']};
         -webkit-font-smoothing: antialiased;
+        ${media.lessThan('small')`
+            margin:0px;
+            width:100vw;
+            height:100vh;
+            overflow:auto;
+        `}
     }
     body, input,textarea, button,span {
         font-family: 'Roboto', sans-serif;

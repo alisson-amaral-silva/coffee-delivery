@@ -10,8 +10,8 @@ export interface DescriptionProps {
 export function Description({ icon, color, text }: DescriptionProps) {
   return (
     <>
-    <DescriptionWrapper>
-      {!!icon && <Icon  color={color}>{icon}</Icon>}
+    <DescriptionWrapper >
+      {!!icon && <Icon  className="icon" color={color}>{icon}</Icon>}
       {!!text && text}
     </DescriptionWrapper>
     </>

@@ -39,7 +39,7 @@ export function OrderForm() {
           type: 'custom',
           message: 'Favor inserir um cep no formato correto',
         })
-        
+
         setValue('street', '')
         setValue('city', '')
         setValue('district', '')
@@ -110,20 +110,10 @@ export function OrderForm() {
               />
             </div>
             <div>
-              <InputComplementWrapper className="input-wrapper">
-                <ComplementWrapper
-                  width={17.3}
-                  placeholder="Complemento"
-                  {...register('complement')}
-                />
-                <SuffixWrapper className="suffix">Opcional</SuffixWrapper>
-              </InputComplementWrapper>
-              <ErrorMessage
-                errors={errors}
-                name="complement"
-                render={({ message }) => (
-                  <ErrorMessageWrapper>{message}</ErrorMessageWrapper>
-                )}
+              <BaseInput
+                width={17.3}
+                placeholder="Complemento"
+                {...register('complement')}
               />
             </div>
           </BaseInputWrapper>

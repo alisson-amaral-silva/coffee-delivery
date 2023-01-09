@@ -24,17 +24,16 @@ export function Success() {
     useContext(CoffeesContext)
   const descriptions: DescriptionProps[] = [
     {
-      icon: <Coffee size={24} weight="fill" />,
+      icon: <Coffee size={25} weight="fill" />,
       color: 'gray',
       text: (
         <SpanWrapper>
-          {' '}
           <b>{coffeeAcquisition?.coffeeList} </b> comprado(s) com Sucesso!
         </SpanWrapper>
       ),
     },
     {
-      icon: <MapPin size={25} weight="fill" />,
+      icon: <MapPin size={26} weight="fill" />,
       color: 'purple',
       text: (
         <SpanWrapper>

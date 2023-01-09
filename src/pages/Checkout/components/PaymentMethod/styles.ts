@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
   background: ${(props) => props.theme['base-card']};
@@ -7,6 +8,12 @@ export const Container = styled.div`
   height: 12.938rem;
   margin-top: 0.75rem;
   border-radius: 6px;
+
+  ${media.lessThan('small')`
+    max-width: 100%;
+    padding: 1.5rem 0.5rem 0 1.5rem;
+    height: 15rem;
+  `}
 `
 
 export const Header = styled.div`
@@ -39,6 +46,11 @@ export const PaymentTypeWrapper = styled.div`
   display: flex;
   gap: 0.75rem;
   margin-top: 2rem;
+
+  ${media.lessThan('small')`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  `}
 `
 
 export const InputWrapper = styled.input`
@@ -64,6 +76,11 @@ export const DescriptionWrapper = styled.label`
   align-items: center;
   gap: 0.813rem;
   padding: 1rem 0.6rem 1rem 1rem;
+
+  ${media.lessThan('small')`
+    padding: 0.5rem;
+    width: 9rem;
+  `}
 
   svg {
     color: ${(props) => props.theme['purple']};

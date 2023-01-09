@@ -29,4 +29,3 @@ export const Icon = styled.div<ItemsProps>`
     padding-top: 0.4rem;
   }
 `
-

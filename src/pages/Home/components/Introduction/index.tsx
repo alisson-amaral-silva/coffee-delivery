@@ -6,9 +6,12 @@ import {
   Subtitle,
   Title,
   TitleWrapper,
-  SpanWrapper
+  SpanWrapper,
 } from './style'
-import { Description, DescriptionProps } from '../../../../components/Description'
+import {
+  Description,
+  DescriptionProps,
+} from '../../../../components/Description'
 
 export function Introduction() {
   const descriptions: DescriptionProps[] = [
@@ -18,7 +21,7 @@ export function Introduction() {
       text: <SpanWrapper>Compra simples e segura</SpanWrapper>,
     },
     {
-      icon: <Package size={24} weight="fill" />,
+      icon: <Package size={26} weight="fill" />,
       color: 'gray',
       text: <SpanWrapper>Embalagem mantém o café intacto</SpanWrapper>,
     },

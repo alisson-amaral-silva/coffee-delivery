@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -9,6 +10,10 @@ export const HeaderWrapper = styled.header`
   height: 6.5rem;
   background: ${(props) => props.theme['background']};
   padding: 0 10rem;
+  ${media.lessThan('small')`
+    padding: 0;
+    padding-right: 1rem;
+  `}
 `
 
 export const CityWrapper = styled.div`
@@ -20,6 +25,9 @@ export const CityWrapper = styled.div`
   color: ${(props) => props.theme['purple-dark']};
   padding: 0.5rem;
   border-radius: 6px;
+  ${media.lessThan('small')`
+    display: none;
+  `}
 `
 
 export const NavWrapper = styled.nav`
