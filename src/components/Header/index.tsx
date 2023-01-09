@@ -8,6 +8,7 @@ import { CoffeesContext } from '../../context/CoffeeContext'
 import { useContext } from 'react'
 
 export function Header() {
+  //Descomentar quando subir pra prod
   const { status, data, error, isFetching } = useCurrentState();
   
   const { getCoffeeQuantity } = useContext(CoffeesContext)

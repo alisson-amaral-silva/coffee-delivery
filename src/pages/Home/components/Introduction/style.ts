@@ -39,10 +39,10 @@ export const OptionsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 2rem 3rem;
-  
+
   ${media.greaterThan('small')`
+    margin-top: 4rem;
     display: grid;
-    width: 2.5rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 2.5rem;
