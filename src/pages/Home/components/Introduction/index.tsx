@@ -23,7 +23,7 @@ export function Introduction() {
     {
       icon: <Package size={26} weight="fill" />,
       color: 'gray',
-      text: <SpanWrapper>Embalagem mantém o café intacto</SpanWrapper>,
+      text: <SpanWrapper>Embalagem protege o café</SpanWrapper>,
     },
     {
       icon: <Timer size={24} weight="fill" />,
@@ -33,7 +33,7 @@ export function Introduction() {
     {
       icon: <Coffee size={24} weight="fill" />,
       color: 'purple',
-      text: <SpanWrapper>O café chega fresquinho até você</SpanWrapper>,
+      text: <SpanWrapper>O café é fresquinho.</SpanWrapper>,
     },
   ]
   return (
