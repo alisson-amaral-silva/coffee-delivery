@@ -3,6 +3,7 @@
 </h1>
 
 
+![demo](https://raw.githubusercontent.com/alisson-amaral-silva/coffee-delivery/main/public/coffee-delivery.png)
 
 ## Quais os componentes internos?
 
@@ -18,6 +19,11 @@ Este projeto contem algumas ferramentas como:
 - [React Hook Form](https://react-hook-form.com/)
 - [Date FNS](https://date-fns.org/)
 - [Immer](https://github.com/immerjs/immer)
+- [React Medium Image Zoom](https://rpearce.github.io/react-medium-image-zoom/)
+- [React Query](https://react-query-v3.tanstack.com/)
+- [React Router Dom](https://reactrouter.com/en/main)
+- [React Slick](https://react-slick.neostack.com/)
+- [React Spinners](https://www.davidhu.io/react-spinners/)
 
 ## Como rodar o projeto ?
 
