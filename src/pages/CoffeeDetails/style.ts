@@ -1,16 +1,35 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
+import SlickSlider from 'react-slick'
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  ${media.lessThan('small')`
+    flex-direction: column;
+  `}
 `
 
 export const ImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  ${media.lessThan('small')`
+    display: none;
+  `}
 `
 
-export const Image = styled.img``
+export const Image = styled.img`
+  ${media.lessThan('small')`
+    display: none;
+  `}
+`
+
+export const MobileImage = styled.img`
+  ${media.greaterThan('small')`
+    display:none;
+  `}
+  width: 100%;
+`
 
 export const Description = styled.span`
   text-align: center;
@@ -21,7 +40,23 @@ export const ProductDetails = styled.div`
   gap: 1rem;
 `
 
+export const MobileHeading = styled.h1`
+  ${media.greaterThan('small')`
+    display: none;
+    `}
+  text-align: center;
+`
+
+export const Heading = styled.h1`
+  ${media.lessThan('small')`
+    display: none;
+  `}
+`
+
 export const Price = styled.h2`
+  ${media.lessThan('small')`
+    text-align: left;
+  `}
   text-align: end;
 `
 export const BuyButton = styled.button`
@@ -69,6 +104,8 @@ export const AddToCart = styled.button`
 `
 
 export const Wrapper = styled.section`
+  box-shadow: none;
+
   .slick-slider {
     position: relative;
     display: block;
@@ -82,14 +119,14 @@ export const Wrapper = styled.section`
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 0 0 2px transparent;
   }
   .slick-list {
     position: relative;
     display: block;
     overflow: hidden;
     margin: 0;
-    padding: 0;
-    padding: 1rem;
+    padding: 20px 20px;
   }
   .slick-list:focus {
     outline: none;
@@ -105,12 +142,14 @@ export const Wrapper = styled.section`
     -ms-transform: translate3d(0, 0, 0);
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    box-shadow: 0 0 0 2px transparent;
   }
   .slick-track {
     position: relative;
     top: 0;
     left: 0;
     display: block;
+    box-shadow: 0 0 0 2px transparent;
   }
   .slick-track:before,
   .slick-track:after {
@@ -128,6 +167,7 @@ export const Wrapper = styled.section`
     float: left;
     height: 100%;
     min-height: 1px;
+    box-shadow: 0 0 0 2px transparent;
   }
   [dir='rtl'] .slick-slide {
     float: right;
@@ -165,6 +205,8 @@ export const Slider = styled.div`
 
 export const SliderWrapper = styled.section`
   margin-top: 2rem;
+  box-shadow: none;
+
   .slick-dots {
     list-style: none;
     display: flex !important;
@@ -183,6 +225,7 @@ export const SliderWrapper = styled.section`
       cursor: pointer;
       &.slick-active {
         background: ${(props) => props.theme['purple-dark']};
+        box-shadow: none;
       }
     }
     button {
@@ -192,4 +235,7 @@ export const SliderWrapper = styled.section`
       cursor: pointer;
     }
   }
+`
+export const SlickSliderWrapper = styled(SlickSlider)`
+  box-shadow: none;
 `

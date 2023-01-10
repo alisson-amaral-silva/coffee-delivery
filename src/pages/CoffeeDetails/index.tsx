@@ -10,7 +10,11 @@ import {
   AddToCart,
   Wrapper,
   SliderWrapper,
-  Image
+  Image,
+  MobileHeading,
+  Heading,
+  MobileImage,
+  SlickSliderWrapper,
 } from './style'
 import { CoffeeType } from '../Home/components/CoffeeType'
 import Zoom from 'react-medium-image-zoom'
@@ -40,6 +44,15 @@ export function CoffeeDetails() {
     dots: true,
     slidesToScroll: 4,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   const handleAddToCart = useCallback(() => {
@@ -72,6 +85,7 @@ export function CoffeeDetails() {
   return (
     <>
       <Container>
+        <MobileHeading>{coffee?.name}</MobileHeading>
         <ImageWrapper>
           <Zoom>
             <Image
@@ -80,8 +94,12 @@ export function CoffeeDetails() {
             />
           </Zoom>
         </ImageWrapper>
+        <MobileImage
+          alt={`imagem de um(a) ${coffee?.name}`}
+          src={coffee?.detailed_img}
+        />
         <ProductDetails>
-          <h1>{coffee?.name}</h1>
+          <Heading>{coffee?.name}</Heading>
           <CoffeeType coffeeList={coffee!.types} />
           <Price>R$ {coffee?.price.toFixed(2)}</Price>
           <b>Sobre esse item:</b>
@@ -92,11 +110,11 @@ export function CoffeeDetails() {
       </Container>
       <SliderWrapper>
         <Wrapper>
-          <SlickSlider {...settings}>
+          <SlickSliderWrapper {...settings}>
             {coffeeList.map((item, index) => (
               <CoffeeCard key={index} {...item} />
             ))}
-          </SlickSlider>
+          </SlickSliderWrapper>
         </Wrapper>
       </SliderWrapper>
     </>

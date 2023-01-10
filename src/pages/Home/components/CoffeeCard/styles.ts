@@ -13,6 +13,7 @@ export const CoffeeWrapper = styled.div`
   img {
     padding: 0;
   }
+  
 `
 
 export const LinkWrapper = styled.button`
