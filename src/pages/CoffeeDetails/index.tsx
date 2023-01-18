@@ -14,21 +14,19 @@ import {
   MobileHeading,
   Heading,
   MobileImage,
-  SlickSliderWrapper,
 } from './style'
 import { CoffeeType } from '../Home/components/CoffeeType'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import SlickSlider, { Settings } from 'react-slick'
 import { CoffeeCard } from '../Home/components/CoffeeCard'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import { CoffeesContext } from '../../context/CoffeeContext'
 import { useCallback, useContext } from 'react'
 import { Coffee } from '../../reducers/coffees/reducer'
 
-export type SliderSettings = Settings
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
+
 export function CoffeeDetails() {
   const { createNewCoffee } = useContext(CoffeesContext)
   let navigate = useNavigate()
@@ -37,23 +35,16 @@ export function CoffeeDetails() {
   const coffee = mock.find((coffee) => coffee.id === Number(coffeeId))
   const coffeeList = mock.filter((coffee) => coffee.id !== Number(coffeeId))
 
-  const settings: SliderSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    dots: true,
-    slidesToScroll: 4,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  }
+  const [sliderRef] = useKeenSlider({
+    breakpoints: {
+      "(max-width: 500px)": {
+        slides: { perView: 1 },
+      }
+    },
+    slides: {
+      perView: "auto"
+    },
+  })
 
   const handleAddToCart = useCallback(() => {
     const { id, name, img, price, quantity } = coffee!
@@ -110,11 +101,13 @@ export function CoffeeDetails() {
       </Container>
       <SliderWrapper>
         <Wrapper>
-          <SlickSliderWrapper {...settings}>
-            {coffeeList.map((item, index) => (
-              <CoffeeCard key={index} {...item} />
+          <div ref={sliderRef} className="keen-slider">
+            {coffeeList.map((item) => (
+              <div key={item.name} className="keen-slider__slide">
+                <CoffeeCard  {...item} />
+              </div>
             ))}
-          </SlickSliderWrapper>
+          </div>
         </Wrapper>
       </SliderWrapper>
     </>

@@ -24,7 +24,7 @@ Este projeto contem algumas ferramentas como:
 - [React Medium Image Zoom](https://rpearce.github.io/react-medium-image-zoom/)
 - [React Query](https://react-query-v3.tanstack.com/)
 - [React Router Dom](https://reactrouter.com/en/main)
-- [React Slick](https://react-slick.neostack.com/)
+- [Keen Slider](https://keen-slider.io/)
 - [React Spinners](https://www.davidhu.io/react-spinners/)
 
 ## Como rodar o projeto ?
