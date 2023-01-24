@@ -10,6 +10,7 @@ export const HeaderWrapper = styled.header`
   height: 6.5rem;
   background: ${(props) => props.theme['background']};
   padding: 0 10rem;
+  z-index: 999;
   ${media.lessThan('small')`
     padding: 0;
     padding-right: 1rem;

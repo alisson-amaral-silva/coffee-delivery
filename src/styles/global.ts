@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         margin:0;
         padding:0;
         box-sizing: border-box;
+        min-width: auto;
     }
 
     :focus {
@@ -17,7 +18,8 @@ export const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme['background']};
         color: ${(props) => props.theme['base-text']};
         -webkit-font-smoothing: antialiased;
-        ${media.lessThan('small')`
+        min-width: auto;
+        ${media.lessThan('medium')`
             margin:0px;
             width:100vw;
             height:100vh;
