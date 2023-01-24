@@ -12,6 +12,9 @@ import {
   InputWrapper,
   BaseInputWrapper,
   ErrorMessageWrapper,
+  TextInputContainer,
+  ComplementInput,
+  Suffix,
 } from './styles'
 import { Controller, useFormContext } from 'react-hook-form'
 import { FocusEvent, useEffect } from 'react'
@@ -94,7 +97,7 @@ export function OrderForm() {
             placeholder="Rua"
             aria-disabled={true}
             disabled
-            width={35}
+            width={"100%"}
             {...register('street')}
           />
 
@@ -109,13 +112,10 @@ export function OrderForm() {
                 )}
               />
             </div>
-            <div>
-              <BaseInput
-                width={17.3}
-                placeholder="Complemento"
-                {...register('complement')}
-              />
-            </div>
+              <TextInputContainer className="box">
+                <ComplementInput placeholder='Complemento' {...register('complement')} />
+                <Suffix>Opcional</Suffix>
+              </TextInputContainer>
           </BaseInputWrapper>
 
           <BaseInputWrapper>

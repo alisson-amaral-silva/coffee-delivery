@@ -48,7 +48,7 @@ export const FormSubtitle = styled.span`
 export const InputWrapper = styled.div`
   margin-top: 2rem;
   grid-row-gap: 1rem;
-  width: 37rem;
+  width: 100%;
 
   ${media.lessThan('small')`
     width: 100%;
@@ -59,7 +59,7 @@ export const InputWrapper = styled.div`
 `
 
 interface BaseInputProps {
-  width?: number
+  width?: number | string
 }
 
 export const BaseInputWrapper = styled.div`
@@ -71,9 +71,57 @@ export const BaseInputWrapper = styled.div`
   gap: 0.75rem;
 `
 
-interface BaseErrorWrapperProps {
-  grid: string
-}
+export const TextInputContainer = styled.div`
+  background: ${(props) => props.theme['base-input']};
+  padding: 0.75rem;
+  height: 2.6rem;
+  box-sizing: border-box;
+  border: 1px solid ${(props) => props.theme['base-button']};
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-radius: 4px;
+
+  width: 100%;
+
+  &:focus-within {
+    border: 1px solid ${(props) => props.theme['yellow-dark']};
+  }
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme['yellow-dark']};
+  }
+`
+
+export const Suffix = styled.span`
+  font-size: 0.75rem;
+  font-style: italic;
+  color: ${(props) => props.theme['base-label']};
+  line-height: 130%;
+  font-weight: 400;
+`
+
+export const ComplementInput = styled.input`
+  background: transparent;
+  height: 100%;
+  color: ${(props) => props.theme['base-text']};
+  font-weight: 400;
+  width: 100%;
+  border: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme['base-label']};
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+`
 
 export const BaseInput = styled.input<BaseInputProps>`
   background: ${(props) => props.theme['base-input']};
@@ -90,7 +138,7 @@ export const BaseInput = styled.input<BaseInputProps>`
 
   &:disabled {
     cursor: not-allowed;
-
+    opacity: 0.5;
     border: 1px solid ${(props) => props.theme['base-button']};
   }
 
@@ -99,10 +147,10 @@ export const BaseInput = styled.input<BaseInputProps>`
     font-size: 0.875rem;
     font-size: 1.138rem;
   }
-  &:active {
+  &:not([disabled]):active {
     border: 1px solid ${(props) => props.theme['yellow-dark']};
   }
-  &:focus {
+  &:not([disabled]):focus {
     box-shadow: none;
     border: 1px solid ${(props) => props.theme['yellow-dark']};
   }
