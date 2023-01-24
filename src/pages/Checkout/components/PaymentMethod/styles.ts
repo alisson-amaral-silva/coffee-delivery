@@ -90,15 +90,15 @@ export const PaymentTypeButton = styled(RadioGroup.Item)`
 `
 
 interface ErrorMessageProps {
-  alignPosition?: 'center'
+  variant?: 'center'
 }
 
-export const ErrorMessageWrapper = styled.p<ErrorMessageProps>`
+export const ErrorMessageWrapper = styled.span`
   color: ${(props) => props.theme['red']};
   font-size: 0.875rem;
   margin-top: 0.5rem;
 
-  ${media.lessThan('small')`
-    text-align: ${(props) => props.alignPosition || 'left'};
+  ${media.lessThan<ErrorMessageProps>('small')`
+    text-align: ${(props) => props.variant || 'left'};
   `}
 `
