@@ -32,7 +32,7 @@ export function Checkout() {
     },
   })
 
-  const { handleSubmit, watch } = checkoutForm
+  const { handleSubmit } = checkoutForm
 
   function handleCheckout(data: CheckoutFormData) {
     const coffeesName = coffees.map((coffee) => coffee.name)
@@ -42,6 +42,7 @@ export function Checkout() {
       paymentMethod: data.paymentOption,
       coffeeList: coffeesName.toString(),
     }
+    
     handleCoffeeAcquisition(acquisition)
     navigate('/success', { replace: true })
   }

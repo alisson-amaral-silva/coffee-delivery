@@ -19,12 +19,10 @@ export const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme['base-text']};
         -webkit-font-smoothing: antialiased;
         min-width: auto;
-        ${media.lessThan('medium')`
             margin:0px;
             width:100vw;
             height:100vh;
             overflow:auto;
-        `}
     }
     body, input,textarea, button,span {
         font-family: 'Roboto', sans-serif;

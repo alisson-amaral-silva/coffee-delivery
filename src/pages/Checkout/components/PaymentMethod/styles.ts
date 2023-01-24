@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
+import * as RadioGroup from '@radix-ui/react-radio-group'
 
 export const Container = styled.div`
   background: ${(props) => props.theme['base-card']};
@@ -11,8 +12,8 @@ export const Container = styled.div`
 
   ${media.lessThan('small')`
     max-width: 100%;
-    padding: 1.5rem 0.5rem 0 1.5rem;
-    height: 17rem;
+    padding: 1.5rem;
+    height: 20.5rem;
   `}
 `
 
@@ -42,61 +43,62 @@ export const Subtitle = styled.span`
   color: ${(props) => props.theme['base-text']};
 `
 
-export const PaymentTypeWrapper = styled.div`
+export const PaymentTypeWrapper = styled(RadioGroup.Root)`
   display: flex;
   gap: 0.75rem;
   margin-top: 2rem;
 
   ${media.lessThan('small')`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   `}
 `
 
-export const InputWrapper = styled.input`
-  display: none;
-  border-radius: 6px;
-  cursor: pointer;
-  &:checked + label {
-    border: solid 1px ${(props) => props.theme['purple']};
-    background: ${(props) => props.theme['purple-light']};
-  }
-`
-
-export const DescriptionWrapper = styled.label`
+export const PaymentTypeButton = styled(RadioGroup.Item)`
   background: ${(props) => props.theme['base-button']};
-
-  cursor: pointer;
-
   width: 11.125rem;
   height: 3.188rem;
-  border-radius: 6px;
-
+  padding: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.813rem;
-  padding: 1rem 0.6rem 1rem 1rem;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: 0;
+  text-transform: uppercase;
+  color: ${(props) => props.theme['base-text']};
+  cursor: pointer;
+  transition: background-color 0.5s;
 
-  ${media.lessThan('small')`
-    padding: 0.5rem;
-    width: 9rem;
-  `}
+  &[data-state='unchecked']:hover {
+    background: ${(props) => props.theme['base-hover']};
+    box-shadow: none;
+  }
+
+  &[data-state='checked'] {
+    background: ${(props) => props.theme['purple-light']};
+    border: solid 1px ${(props) => props.theme['purple']};
+    box-shadow: none;
+  }
 
   svg {
     color: ${(props) => props.theme['purple']};
   }
-
-  &:hover {
-    background: ${(props) => props.theme['base-hover']};
-  }
-`
-export const SpanWrapper = styled.span`
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: ${(props) => props.theme['base-text']};
 `
 
-export const Icon = styled.div`
-  width: 1rem;
-  height: 1rem;
+interface ErrorMessageProps {
+  alignPosition?: 'center'
+}
+
+export const ErrorMessageWrapper = styled.p<ErrorMessageProps>`
+  color: ${(props) => props.theme['red']};
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+
+  ${media.lessThan('small')`
+    text-align: ${(props) => props.alignPosition || 'left'};
+  `}
 `

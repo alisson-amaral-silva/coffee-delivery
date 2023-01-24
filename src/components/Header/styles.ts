@@ -12,8 +12,7 @@ export const HeaderWrapper = styled.header`
   padding: 0 10rem;
   z-index: 999;
   ${media.lessThan('small')`
-    padding: 0;
-    padding-right: 1rem;
+    padding: 0 1rem;
   `}
 `
 
