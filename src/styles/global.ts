@@ -20,7 +20,6 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         min-width: auto;
             margin:0px;
-            width:100vw;
             height:100vh;
             overflow:auto;
     }
